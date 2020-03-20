@@ -18,7 +18,7 @@ const VIDEO_DETAIL = "/:id"; //영상을 보고 싶을때
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
-const home = {
+const routes = {
     home : HOME,
     join : JOIN,
     login : LOGIN,
