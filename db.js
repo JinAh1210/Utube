@@ -1,50 +1,22 @@
-export const videos = [
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+
+mongoose.connect(
+    process.env.MONGO_URL,
     {
-        id : 111111,
-        title : "Video awesome",
-        description : 'This is something I love',
-        views : 24,
-        videoFile: "https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator : {
-            id : 121212,
-            name : "JinAh",
-            email : "Jin@Ah.com"
-        } 
-    },
-    {
-        id: 222222,
-        title: "Video super",
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "JinAh",
-            email: "Jin@Ah.com"
-        }
-    },
-    {
-        id: 333333,
-        title: "Video nice",
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "JinAh",
-            email: "Jin@Ah.com"
-        }
-    },
-    {
-        id: 777777,
-        title: "Video perfect",
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "JinAh",
-            email: "Jin@Ah.com"
-        }
+        useNewUrlParser: true,
+        useFindAndModify:false,
+        useUnifiedTopology: true
     }
-]
+);
+
+const db = mongoose.connection;
+
+const handleOpen = () => console.log("Connected to DB");
+const handleError = error => console.log(`Error on DB Connection : ${error}`);
+
+db.once("open",handleOpen);
+db.on("error", handleError);
